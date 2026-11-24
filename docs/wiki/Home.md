@@ -24,7 +24,7 @@ Canonical source-of-truth is the router `operation_id` values in this repo:
 - **InsightVM:** 17 tools
 - **InsightIDR:** 4 tools
 - **Metasploit Pro:** 5 tools
-- **Total:** 26 tools
+- **Total:** 27 tools
 
 ## Who this is for
 

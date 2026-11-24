@@ -1,0 +1,374 @@
+{
+  "months": {
+    "2026-10": {
+      "month": "2026-10",
+      "display_name": "October 2026",
+      "client": "National Pension Scheme Authority (NAPSA)",
+      "soc_provider": "StarLabs SOC Team",
+      "period": {
+        "start_date": "2026-10-01T00:00:00Z",
+        "end_date": "2026-10-31T23:59:59Z"
+      },
+      "total_investigations": 3630,
+      "investigations_by_priority": {
+        "Critical": 0,
+        "High": 58,
+        "Medium": 796,
+        "Low": 2776,
+        "Unspecified": 0
+      },
+      "malicious_investigations": 1092,
+      "malicious_summary": "1,092 investigations flagged as Malicious in Rapid7, all categorized under Low priority. 100% were brute-force credential stuffing attempts against Office 365 logins using previously harvested/stolen credential dumps. No unauthorized access or data compromise occurred.",
+      "sla_metrics": {
+        "target_closure_rate_percent": 90,
+        "investigation_closure": {
+          "Critical": {
+            "target_time": "8 hours",
+            "achieved_ratio": "0/0",
+            "met_percent": 100.0,
+            "status": "MET"
+          },
+          "High": {
+            "target_time": "12 hours",
+            "achieved_ratio": "51/58",
+            "met_percent": 87.93,
+            "status": "MISSED"
+          },
+          "Medium": {
+            "target_time": "2 days",
+            "achieved_ratio": "752/796",
+            "met_percent": 94.4,
+            "status": "MET"
+          },
+          "Low": {
+            "target_time": "3 days",
+            "achieved_ratio": "2578/2776",
+            "met_percent": 92.87,
+            "status": "MET"
+          }
+        },
+        "malicious_containment": {
+          "Low": {
+            "target_time": "3 days",
+            "achieved_ratio": "1050/1092",
+            "met_percent": 96.15,
+            "status": "MET"
+          }
+        },
+        "mttr": {
+          "display": "0 days, 2 hours, 50 minutes, 47 seconds",
+          "seconds": 10247,
+          "hours": 2.85
+        }
+      },
+      "alerts_pending_closure": {
+        "total_pending": 191,
+        "breakdown": {
+          "Critical": { "open": 0, "investigating": 0, "waiting": 0, "total": 0 },
+          "High": { "open": 0, "investigating": 0, "waiting": 7, "total": 7 },
+          "Medium": { "open": 0, "investigating": 0, "waiting": 42, "total": 42 },
+          "Low": { "open": 0, "investigating": 8, "waiting": 142, "total": 150 }
+        }
+      },
+      "detection_rules_resolution_speed": [
+        { "rule": "Attacker Behavior Detected", "avg_time_to_assign": "< 1 hour", "avg_time_to_close": "4 hours" },
+        { "rule": "Harvested Credentials", "avg_time_to_assign": "< 1 hour", "avg_time_to_close": "2 hours" },
+        { "rule": "Third Party Alert", "avg_time_to_assign": "< 1 hour", "avg_time_to_close": "< 1 hour" },
+        { "rule": "Honeypot Access", "avg_time_to_assign": "< 1 hour", "avg_time_to_close": "< 1 hour" },
+        { "rule": "Accounts Enabled", "avg_time_to_assign": "< 1 hour", "avg_time_to_close": "< 1 hour" },
+        { "rule": "Lateral Movement - Watched User Impersonation", "avg_time_to_assign": "< 1 hour", "avg_time_to_close": "< 1 hour" },
+        { "rule": "Lateral Movement - Administrator Impersonation", "avg_time_to_assign": "< 1 hour", "avg_time_to_close": "< 1 hour" },
+        { "rule": "Custom Alert - Pattern Detection", "avg_time_to_assign": "< 1 hour", "avg_time_to_close": "1 day 8 hours" },
+        { "rule": "Multiple Country Authentications", "avg_time_to_assign": "< 1 hour", "avg_time_to_close": "< 1 hour" },
+        { "rule": "Account Password Reset", "avg_time_to_assign": "< 1 hour", "avg_time_to_close": "2 hours" }
+      ],
+      "top_triggered_detection_rules": [
+        { "rule": "Attacker Behavior Detected", "count": 205 },
+        { "rule": "Ingress From Disabled Account", "count": 84 },
+        { "rule": "Brute Force - Asset", "count": 61 },
+        { "rule": "Harvested Credentials", "count": 35 },
+        { "rule": "New Local User Account Created", "count": 26 },
+        { "rule": "Third Party Alert", "count": 25 },
+        { "rule": "Lateral Movement - Administrator Impersonation", "count": 16 },
+        { "rule": "Lateral Movement - Watched User Impersonation", "count": 14 },
+        { "rule": "Account Password Reset", "count": 9 },
+        { "rule": "Lateral Movement - Local Credentials", "count": 8 }
+      ],
+      "top_risky_users": [
+        {
+          "rank": 1,
+          "name": "Chikwa Luputa",
+          "email": "luputac@napsa.co.zm",
+          "risk_score": 98,
+          "risk_reasons": "Primary target of high-volume brute-force attacks; 1,062 harvested credential login attempts on Office 365.",
+          "status": "Active / Monitored",
+          "account_type": "Standard User"
+        },
+        {
+          "rank": 2,
+          "name": "Chusi Mwanza",
+          "email": "mwanzac@napsa.co.zm",
+          "risk_score": 92,
+          "risk_reasons": "Repeated brute force target; anomalous authentication requests from external untrusted IPs.",
+          "status": "Active / Monitored",
+          "account_type": "Standard User"
+        },
+        {
+          "rank": 3,
+          "name": "Priscilla Samakesa",
+          "email": "samakesap@napsa.co.zm",
+          "risk_score": 88,
+          "risk_reasons": "Sustained credential stuffing attempts on mail endpoint; flagged in threat intelligence feeds.",
+          "status": "Active / Password Reset Recommended",
+          "account_type": "Standard User"
+        },
+        {
+          "rank": 4,
+          "name": "James Phiri",
+          "email": "phirij@napsa.co.zm",
+          "risk_score": 85,
+          "risk_reasons": "Multiple brute-force hits across O365 ingress; password reset requested and confirmed.",
+          "status": "Active / Monitored",
+          "account_type": "Standard User"
+        },
+        {
+          "rank": 5,
+          "name": "Yvonne Admin",
+          "email": "yvonne.admin@napsa.co.zm",
+          "risk_score": 82,
+          "risk_reasons": "Privileged account targeted by credential guessing; multiple RDP session lockouts causing account conflicts.",
+          "status": "Privileged / MFA Enforced",
+          "account_type": "Domain Admin"
+        },
+        {
+          "rank": 6,
+          "name": "Humphrey Admin",
+          "email": "humphrey.admin@napsa.co.zm",
+          "risk_score": 78,
+          "risk_reasons": "Privileged administrator account; off-hours administrative access and multiple session locks.",
+          "status": "Privileged",
+          "account_type": "Domain Admin"
+        },
+        {
+          "rank": 7,
+          "name": "Kanyemba Admin",
+          "email": "kanyemba.admin@napsa.co.zm",
+          "risk_score": 75,
+          "risk_reasons": "Account subject to administrator impersonation event by user moombek; RDP lockouts.",
+          "status": "Privileged / Audited",
+          "account_type": "Domain Admin"
+        },
+        {
+          "rank": 8,
+          "name": "Evan Admin",
+          "email": "evan.admin@napsa.co.zm",
+          "risk_score": 72,
+          "risk_reasons": "Top locked out administrator due to dangling RDP sessions across servers.",
+          "status": "Privileged",
+          "account_type": "Domain Admin"
+        },
+        {
+          "rank": 9,
+          "name": "Fidelis Katandika",
+          "email": "katandikaf@napsa.co.zm",
+          "risk_score": 68,
+          "risk_reasons": "Repeated workstation and RDP account lockouts; 12 lockout occurrences.",
+          "status": "Active",
+          "account_type": "Standard User"
+        },
+        {
+          "rank": 10,
+          "name": "Tony Admin",
+          "email": "tony.admin@napsa.co.zm",
+          "risk_score": 65,
+          "risk_reasons": "Privileged admin account lockouts; session conflict during administrative operations.",
+          "status": "Privileged",
+          "account_type": "Domain Admin"
+        }
+      ],
+      "top_targeted_users": [
+        { "user": "Chilekwa Luputa", "count": 1062, "type": "Harvested Credentials / Brute Force" },
+        { "user": "Chusi Mwanza", "count": 487, "type": "Harvested Credentials / Brute Force" },
+        { "user": "Priscilla Samakesa", "count": 312, "type": "Harvested Credentials / Brute Force" },
+        { "user": "James Phiri", "count": 184, "type": "Harvested Credentials / Brute Force" },
+        { "user": "Yvonne Admin", "count": 96, "type": "Harvested Credentials / Brute Force" }
+      ],
+      "top_locked_out_users": [
+        { "user": "Evan Admin", "role": "Privileged Admin", "reason": "Dangling RDP session conflict" },
+        { "user": "Fidelis Katandika", "role": "Standard User", "reason": "Repeated failed logon attempts" },
+        { "user": "Yvonne Admin", "role": "Privileged Admin", "reason": "Unclosed RDP remote sessions" },
+        { "user": "Kanyemba Admin", "role": "Privileged Admin", "reason": "Impersonation and concurrent session conflicts" },
+        { "user": "Tony Admin", "role": "Privileged Admin", "reason": "Multi-host admin logon timeouts" }
+      ],
+      "account_behavior_events": {
+        "locked_out_total": 1279,
+        "unlocked_total": 113,
+        "disabled_total": 56,
+        "re_enabled_total": 16,
+        "notable_re_enabled": [
+          { "account": "kapanshan", "re_enabled_by": "moses.admin", "status": "Authorized" },
+          { "account": "christinec", "re_enabled_by": "maybin.admin", "status": "Authorized" }
+        ]
+      },
+      "incident_attribution": {
+        "office365_malicious_url_clicks": {
+          "total_incidents": 3,
+          "users_involved": [
+            "kwalelam@napsa.co.zm",
+            "chondokab@napsa.co.zm",
+            "kalengao@napsa.co.zm",
+            "kowak@napsa.co.zm",
+            "moongam@napsa.co.zm",
+            "sikazwec@napsa.co.zm",
+            "luhangam@napsa.co.zm",
+            "hambulaf@napsa.co.zm",
+            "mtongaj@napsa.co.zm"
+          ],
+          "status": "Pending confirmation from NAPSA team; Harmony Endpoint isolated suspicious endpoints."
+        },
+        "lateral_movement_impersonations": [
+          { "user": "moombek", "authenticated_as": "kanyemba.admin", "verdict": "Legitimate admin action, monitored" },
+          { "user": "mvulat", "authenticated_as": "thandiwe.admin", "verdict": "Legitimate admin action, monitored" },
+          { "user": "mwalee", "authenticated_as": "mwansam", "verdict": "Legitimate admin action, monitored" }
+        ],
+        "multiple_country_authentications": [
+          {
+            "user": "handongwem@napsa.co.zm",
+            "details": "Authenticated from 2 countries within 36 minutes (impossible travel)",
+            "verdict": "Verified legitimate business travel/VPN roaming by NAPSA team"
+          }
+        ],
+        "custom_pattern_alerts": {
+          "total": 195,
+          "triggers": [
+            "Custom Alert O365 successful login outside Zambia (MS365 Ingress Authentication)",
+            "Custom Alert VPN CONNECTION OUTSIDE ZAMBIA (Napsa-SMS)"
+          ],
+          "verdict": "Deemed legitimate remote work / travel after SOC confirmation"
+        },
+        "suspicious_process_hash": {
+          "count": 1,
+          "details": "Known malicious file hash detected on asset; quarantined by EDR."
+        }
+      },
+      "data_collection_management": {
+        "collector": "napsa-idr.napsa.co.zm",
+        "total_sources_with_issues": 3,
+        "event_sources": [
+          {
+            "name": "DR DC",
+            "type": "Microsoft Active Directory",
+            "method": "WMI",
+            "target_ip": "10.11.4.2",
+            "state": "Warning",
+            "issue": "Connection timed out",
+            "fix_requirements": [
+              "Verify the server is online and accessible over the network.",
+              "Check credentials in the event source settings.",
+              "Ensure the collector can resolve and reach 10.11.4.2."
+            ]
+          },
+          {
+            "name": "Dmsdb01 SQL Server",
+            "type": "Microsoft SQL Server",
+            "method": "WMI",
+            "target_ip": "10.10.1.200",
+            "state": "Warning",
+            "issue": "It has been at least 120 minutes since the last event.",
+            "fix_requirements": [
+              "Confirm whether the devices are online and accessible over the network.",
+              "Verify logging configuration and SQL audit logs.",
+              "Ensure network connectivity to the collector."
+            ]
+          },
+          {
+            "name": "Generic CISCO Logs",
+            "type": "Custom Syslog",
+            "method": "Listen on Network Port",
+            "port": "UDP 6678",
+            "state": "Warning",
+            "issue": "It has been at least 120 minutes since the last event.",
+            "fix_requirements": [
+              "Confirm the Cisco device is configured to send logs to UDP 6678.",
+              "Verify syslog settings on network appliances.",
+              "Check firewall rules and network connectivity for UDP 6678.",
+              "Ensure the collector is actively listening on configured port."
+            ]
+          }
+        ]
+      },
+      "vulnerability_management": {
+        "total_exploitable_vulnerabilities": 476361,
+        "cvss_v3_distribution": [
+          { "category": "Critical (9.0 - 10.0)", "percentage": 8.0, "count": 36428, "color": "#EA4335" },
+          { "category": "High (7.0 - 8.9)", "percentage": 59.0, "count": 280377, "color": "#FBBC04" },
+          { "category": "Medium (4.0 - 6.9)", "percentage": 31.0, "count": 148020, "color": "#4285F4" },
+          { "category": "Low (0.1 - 3.9)", "percentage": 2.0, "count": 11034, "color": "#34A853" },
+          { "category": "None (0.0)", "percentage": 0.11, "count": 502, "color": "#9AA0A6" }
+        ],
+        "cvss_v2_distribution": [
+          { "category": "High (7.0 - 10.0)", "percentage": 67.0, "count": 316805 },
+          { "category": "Medium (4.0 - 6.9)", "percentage": 31.0, "count": 148020 },
+          { "category": "Low (0.0 - 3.9)", "percentage": 2.0, "count": 11536 }
+        ],
+        "top_vulnerabilities": [
+          { "cve": "CVE-2013-3900", "title": "Windows Authenticode Signature Verification Remote Code Execution (MS13-098)", "severity": "Critical", "exploitable": true },
+          { "cve": "CVE-2026-97788", "title": "Active Directory Federation Services (AD FS) Information Disclosure", "severity": "Critical", "exploitable": true },
+          { "cve": "CVE-2026-62886", "title": ".NET Framework Elevation of Privilege Vulnerability", "severity": "High", "exploitable": true },
+          { "cve": "CVE-2026-97801", "title": ".NET Framework Tampering Vulnerability", "severity": "High", "exploitable": true },
+          { "cve": "CVE-2026-70007", "title": ".NET Framework Remote Code Execution Vulnerability", "severity": "Critical", "exploitable": true },
+          { "cve": "CVE-2026-83520", "title": ".NET Remote Code Execution Vulnerability", "severity": "Critical", "exploitable": true },
+          { "cve": "CVE-2026-102869", "title": ".NET and Visual Studio Elevation of Privilege Vulnerability", "severity": "High", "exploitable": true },
+          { "cve": "CVE-2026-96233", "title": "ASP.NET Core Denial of Service Vulnerability", "severity": "Medium", "exploitable": true },
+          { "cve": "CVE-2026-96222", "title": "Active Directory Federation Services (AD FS) Spoofing Vulnerability", "severity": "High", "exploitable": true },
+          { "cve": "CVE-2026-96224", "title": ".NET Remote Code Execution Vulnerability", "severity": "Critical", "exploitable": true },
+          { "cve": "CVE-2026-69651", "title": ".NET Denial of Service Vulnerability", "severity": "Medium", "exploitable": true },
+          { "cve": "CVE-2026-85363", "title": ".NET Framework Elevation of Privilege Vulnerability", "severity": "High", "exploitable": true }
+        ]
+      },
+      "mitre_attack_mappings": [
+        { "alert_type": "Account Enabled", "technique": "Credential Access (T1078)", "reference": "CIS Control 6: Access Control Management" },
+        { "alert_type": "Account Privilege Escalated", "technique": "Privilege Escalation", "reference": "CIS Control 5: Account Management" },
+        { "alert_type": "Account Password Reset", "technique": "Defense Evasion", "reference": "CIS Control 5: Account Management" },
+        { "alert_type": "Custom Alert - Pattern Detection", "technique": "Detection", "reference": "CIS Control 8: Audit Log Management" },
+        { "alert_type": "Attacker Technique - PowerShell Spawns SSH-KeyGen", "technique": "Defense Evasion (T1059.001)", "reference": "CIS Controls v7.1" },
+        { "alert_type": "Brute Force - Local Account", "technique": "Initial Access (T1110)", "reference": "CIS Control 5: Account Management" },
+        { "alert_type": "Honeypot Access", "technique": "Reconnaissance", "reference": "CIS Control 6: Access Control Management" },
+        { "alert_type": "Harvested Credentials", "technique": "Credential Dumping (T1003) & Brute Force (T1110)", "reference": "CIS Controls 5 and 6" },
+        { "alert_type": "Ingress From Privileged Account", "technique": "Privilege Escalation", "reference": "CIS Control 5: Account Management" },
+        { "alert_type": "Lateral Movement - Administrator Impersonation", "technique": "Lateral Movement (T1078)", "reference": "CIS Control 8" },
+        { "alert_type": "Suspicious Process - DarkGate Infection", "technique": "Command and Scripting Interpreter (T1059)", "reference": "Ransomware Defense Controls" },
+        { "alert_type": "Attacker Technique - Office 365 User Clicked Malicious URL", "technique": "Credential Access / Initial Access (T1566)", "reference": "CIS Control 10" },
+        { "alert_type": "Multiple Country Authentications", "technique": "Access Token Manipulation / Anomalous Login", "reference": "The 18 CIS Critical Security Controls" }
+      ],
+      "recommendations": [
+        { "category": "Endpoint Protection", "action": "Deploy and standardize Harmony Endpoint across all remaining production servers for unified EDR." },
+        { "category": "Access Controls & Credentials", "action": "Enforce mandatory MFA across all user and administrative accounts via Entra ID conditional access." },
+        { "category": "RDP Session Hygiene", "action": "Enforce strict session logoff policy on RDP hosts to prevent session conflicts, administrative locks, and exposure." },
+        { "category": "Patch Management", "action": "Deploy Automax to automate patch deployment for critical .NET and AD FS CVEs (e.g., CVE-2026-97788, CVE-2013-3900)." },
+        { "category": "Data Collection Management", "action": "Restore WMI connectivity to DR DC (10.11.4.2), restart SQL logging on Dmsdb01 (10.10.1.200), and verify Cisco syslog on UDP 6678." }
+      ]
+    },
+    "2026-09": {
+      "month": "2026-09",
+      "display_name": "September 2026",
+      "total_investigations": 2215,
+      "investigations_by_priority": { "Critical": 0, "High": 87, "Medium": 731, "Low": 1397, "Unspecified": 0 },
+      "malicious_investigations": 33
+    },
+    "2026-08": {
+      "month": "2026-08",
+      "display_name": "August 2026",
+      "total_investigations": 1416,
+      "investigations_by_priority": { "Critical": 0, "High": 65, "Medium": 538, "Low": 813, "Unspecified": 0 },
+      "malicious_investigations": 29
+    },
+    "2026-07": {
+      "month": "2026-07",
+      "display_name": "July 2026",
+      "total_investigations": 1251,
+      "investigations_by_priority": { "Critical": 0, "High": 34, "Medium": 687, "Low": 530, "Unspecified": 0 },
+      "malicious_investigations": 6
+    }
+  }
+}

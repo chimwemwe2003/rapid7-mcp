@@ -1,0 +1,16 @@
+/* Claude AI-Inspired Design Tokens */
+:root {
+  --claude-bg: #1B1A17;
+  --claude-surface: #24231F;
+  --claude-surface-raised: #2D2C27;
+  --claude-border: rgba(240, 238, 230, 0.08);
+  --claude-border-hover: rgba(204, 120, 92, 0.35);
+  --claude-ink: #F5F4ED;
+  --claude-muted: #8E8D86;
+  --claude-terracotta: #CC785C;
+  --claude-terracotta-hover: #D97757;
+  --claude-terracotta-bg: rgba(204, 120, 92, 0.12);
+  --claude-sage: #5DB8A6;
+  --claude-sage-bg: rgba(93, 184, 166, 0.12);
+  --claude-amber: #D4A373;
+}

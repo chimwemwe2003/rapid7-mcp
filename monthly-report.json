@@ -1,0 +1,28 @@
+{
+    "month":  "2026-11",
+    "period":  {
+                   "start_date":  "2026-11-01T00:00:00Z",
+                   "end_date":  "2026-12-01T00:00:00Z"
+               },
+    "total_investigations":  2,
+    "investigations_by_priority":  {
+                                       "Critical":  1,
+                                       "High":  1,
+                                       "Medium":  0,
+                                       "Low":  0
+                                   },
+    "malicious_investigations":  0,
+    "top_triggered_detection_rules":  [
+                                          {
+                                              "rule":  "Attacker Technique",
+                                              "count":  1
+                                          },
+                                          {
+                                              "rule":  "Brute Force",
+                                              "count":  1
+                                          }
+                                      ],
+    "top_targeted_users":  [
+
+                           ]
+}

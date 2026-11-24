@@ -2,6 +2,9 @@
 
 from fastapi.testclient import TestClient
 
+from rapid7_mcp.client import get_idr_client
+from rapid7_mcp.main import app
+
 
 def test_list_investigations(client: TestClient) -> None:
     response = client.get("/idr/investigations")
@@ -18,6 +21,96 @@ def test_list_investigations(client: TestClient) -> None:
 def test_list_investigations_filters(client: TestClient) -> None:
     response = client.get("/idr/investigations?status=INVESTIGATING&priority=CRITICAL")
     assert response.status_code == 200
+
+
+def test_list_investigations_date_filters(client: TestClient) -> None:
+    captured_params: dict = {}
+
+    class CapturingClient:
+        async def get(self, path: str, params: dict | None = None) -> dict:
+            captured_params.update(params or {})
+            return {"data": [], "metadata": {"total_data": 0}}
+
+    app.dependency_overrides[get_idr_client] = lambda: CapturingClient()
+    response = client.get(
+        "/idr/investigations"
+        "?start_date=2024-01-01T00:00:00Z&end_date=2024-02-01T00:00:00Z"
+    )
+
+    assert response.status_code == 200
+    assert captured_params["start_time"] == "2024-01-01T00:00:00Z"
+    assert captured_params["end_time"] == "2024-02-01T00:00:00Z"
+
+
+def test_list_investigations_rejects_reversed_date_range(client: TestClient) -> None:
+    response = client.get(
+        "/idr/investigations"
+        "?start_date=2024-02-01T00:00:00Z&end_date=2024-01-01T00:00:00Z"
+    )
+    assert response.status_code == 422
+
+
+def test_get_monthly_report_data_paginates_and_aggregates(client: TestClient) -> None:
+    requested_indexes: list[int] = []
+    investigations = [
+        {
+            "priority": "CRITICAL",
+            "disposition": "MALICIOUS",
+            "alerts": [
+                {
+                    "detection_rule_name": "Suspicious PowerShell",
+                    "targeted_user": {"username": "alice"},
+                }
+            ],
+        },
+        {
+            "priority": "HIGH",
+            "disposition": "BENIGN",
+            "alerts": [
+                {
+                    "alert_type": "Suspicious PowerShell",
+                    "users": [{"username": "alice"}, {"username": "bob"}],
+                }
+            ],
+        },
+    ]
+
+    class PaginatedClient:
+        async def get(self, path: str, params: dict | None = None) -> dict:
+            assert params is not None
+            requested_indexes.append(params["index"])
+            index = params["index"]
+            return {
+                "data": investigations[index : index + 1],
+                "metadata": {"total_data": 2},
+            }
+
+    app.dependency_overrides[get_idr_client] = lambda: PaginatedClient()
+    response = client.get("/idr/reports/monthly?year=2024&month=1")
+
+    assert response.status_code == 200
+    assert requested_indexes == [0, 1]
+    data = response.json()
+    assert data["month"] == "2024-01"
+    assert data["period"] == {
+        "start_date": "2024-01-01T00:00:00Z",
+        "end_date": "2024-02-01T00:00:00Z",
+    }
+    assert data["total_investigations"] == 2
+    assert data["investigations_by_priority"] == {
+        "Critical": 1,
+        "High": 1,
+        "Medium": 0,
+        "Low": 0,
+    }
+    assert data["malicious_investigations"] == 1
+    assert data["top_triggered_detection_rules"] == [
+        {"rule": "Suspicious PowerShell", "count": 2}
+    ]
+    assert data["top_targeted_users"] == [
+        {"user": "alice", "count": 2},
+        {"user": "bob", "count": 1},
+    ]
 
 
 def test_get_investigation(client: TestClient) -> None:

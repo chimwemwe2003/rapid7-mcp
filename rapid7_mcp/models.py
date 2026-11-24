@@ -347,6 +347,31 @@ class InvestigationList(BaseModel):
     metadata: dict = {}
 
 
+class ReportPeriod(BaseModel):
+    start_date: str
+    end_date: str
+
+
+class ReportTopRule(BaseModel):
+    rule: str
+    count: int
+
+
+class ReportTopUser(BaseModel):
+    user: str
+    count: int
+
+
+class MonthlyInvestigationReport(BaseModel):
+    month: str
+    period: ReportPeriod
+    total_investigations: int
+    investigations_by_priority: dict[str, int]
+    malicious_investigations: int
+    top_triggered_detection_rules: list[ReportTopRule]
+    top_targeted_users: list[ReportTopUser]
+
+
 # ---------------------------------------------------------------------------
 # InsightIDR — Log Search (LEQL)
 # ---------------------------------------------------------------------------
@@ -498,3 +523,100 @@ class MspTask(BaseModel):
 
 class MspTaskList(BaseModel):
     data: list[MspTask] = []
+
+
+# ---------------------------------------------------------------------------
+# Monthly SOC Intelligence & Retention Schemas
+# ---------------------------------------------------------------------------
+
+
+class RiskyUser(BaseModel):
+    rank: int
+    name: str
+    email: str | None = None
+    risk_score: int
+    risk_reasons: str
+    status: str
+    account_type: str = "Standard User"
+
+
+class RiskyUserList(BaseModel):
+    month: str
+    total_risky_users: int
+    users: list[RiskyUser] = []
+
+
+class SlaCategoryMetrics(BaseModel):
+    target_time: str
+    achieved_ratio: str
+    met_percent: float
+    status: str
+
+
+class SlaMttr(BaseModel):
+    display: str
+    seconds: int
+    hours: float
+
+
+class SlaMetricsReport(BaseModel):
+    month: str
+    target_closure_rate_percent: float = 90.0
+    investigation_closure: dict[str, SlaCategoryMetrics] = {}
+    malicious_containment: dict[str, SlaCategoryMetrics] = {}
+    mttr: SlaMttr | None = None
+    alerts_pending_closure: dict[str, Any] = {}
+
+
+class EventSourceIssue(BaseModel):
+    name: str
+    type: str
+    method: str
+    target_ip: str | None = None
+    port: str | None = None
+    state: str
+    issue: str
+    fix_requirements: list[str] = []
+
+
+class EventSourcesHealthReport(BaseModel):
+    month: str
+    collector: str
+    total_sources_with_issues: int
+    event_sources: list[EventSourceIssue] = []
+
+
+class CvssSlice(BaseModel):
+    category: str
+    percentage: float
+    count: int
+    color: str | None = None
+
+
+class TopVulnerabilityEntry(BaseModel):
+    cve: str
+    title: str
+    severity: str
+    exploitable: bool = True
+
+
+class VulnerabilityPostureReport(BaseModel):
+    month: str
+    total_exploitable_vulnerabilities: int
+    cvss_v3_distribution: list[CvssSlice] = []
+    top_vulnerabilities: list[TopVulnerabilityEntry] = []
+
+
+class MonthlyTrendPoint(BaseModel):
+    month: str
+    display_name: str
+    total_investigations: int
+    high_priority: int = 0
+    medium_priority: int = 0
+    low_priority: int = 0
+    malicious_investigations: int = 0
+
+
+class MonthlyTrendsReport(BaseModel):
+    months: list[MonthlyTrendPoint] = []
+    trend_summary: str

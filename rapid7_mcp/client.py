@@ -19,7 +19,7 @@ _EMPTY_PAGE = {
 
 def _load_fixture(name: str) -> dict[str, Any]:
     path = FIXTURES_DIR / name
-    with open(path) as f:
+    with open(path, encoding="utf-8") as f:
         return json.load(f)
 
 
@@ -245,6 +245,7 @@ def get_idr_client(settings: Settings = Depends(get_settings)) -> InsightIDRClie
 # ---------------------------------------------------------------------------
 # Metasploit Pro clients
 # ---------------------------------------------------------------------------
+
 
 
 class MetasploitClient:
